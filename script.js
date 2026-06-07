@@ -19,31 +19,27 @@ function calculate() {
         display.value = "Error";
     }
 }
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", (event) => {
 
     const key = event.key;
 
-    if (
-        (key >= "0" && key <= "9") ||
-        key === "+" ||
-        key === "-" ||
-        key === "*" ||
-        key === "/" ||
-        key === "."
-    ) {
+    if ("0123456789+-*/.".includes(key)) {
+        event.preventDefault();
         appendValue(key);
     }
 
     if (key === "Enter") {
+        event.preventDefault();
         calculate();
     }
 
     if (key === "Backspace") {
+        event.preventDefault();
         deleteLast();
     }
 
     if (key === "Escape") {
+        event.preventDefault();
         clearDisplay();
     }
-
 });
